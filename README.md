@@ -6,6 +6,25 @@
 
 ---
 
+## Quick Install & Usage
+
+### Install via `pnpm` (or release tarball)
+
+```powershell
+pnpm add github:awesome-os/ghost-100
+```
+
+Or download the latest SHA-256 verified archive from [`Releases`](https://github.com/awesome-os/ghost-100/releases/latest).
+
+### Usage & Verification
+
+```powershell
+# Verify all 100 catalog entries + live cold/warm CAS hydration (Node.js 22+)
+node --test run-demos.mts
+```
+
+---
+
 ## 2-Line Quickstart
 
 Requires **Node.js 22+** (zero `npm install`, zero external dependencies):
