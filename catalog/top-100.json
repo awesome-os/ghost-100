@@ -1,0 +1,806 @@
+{
+  "schema": "ghost-100-catalog-v1",
+  "total": 100,
+  "items": [
+    {
+      "id": 1,
+      "category": "Codecs & Compression",
+      "title": "Zero-build Brotli native compression on Windows x64",
+      "pain_eliminated": "node-gyp + Python + Visual Studio Build Tools for native Brotli bindings",
+      "cas_asset": "libbrotli-win64.dll",
+      "one_liner": "const br = await ghostFFIByName('libbrotli-win64.dll', { symbols: { BrotliEncoderCompress: { args: ['i32','i32','i32','usize','ptr','ptr','ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 2,
+      "category": "Codecs & Compression",
+      "title": "Instant Brotli native decompression on Linux x64 servers",
+      "pain_eliminated": "apt-get install libbrotli-dev + glibc version drift across Docker images",
+      "cas_asset": "libbrotli-linux-x64.so",
+      "one_liner": "const br = await ghostFFIByName('libbrotli-linux-x64.so', { symbols: { BrotliDecoderDecompress: { args: ['usize','ptr','ptr','ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 3,
+      "category": "Codecs & Compression",
+      "title": "Native ARM64 Brotli codec for AWS Graviton & Raspberry Pi",
+      "pain_eliminated": "QEMU cross-builds and missing aarch64 prebuild-install tarballs",
+      "cas_asset": "libbrotli-linux-arm64.so",
+      "one_liner": "const br = await ghostFFIByName('libbrotli-linux-arm64.so', { symbols: { BrotliDecoderVersion: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 4,
+      "category": "Codecs & Compression",
+      "title": "Apple Silicon native Brotli without Homebrew or Xcode CLT",
+      "pain_eliminated": "brew install brotli + 2 GB Xcode Command Line Tools on macOS arm64",
+      "cas_asset": "libbrotli-macos-arm64.dylib",
+      "one_liner": "const br = await ghostFFIByName('libbrotli-macos-arm64.dylib', { symbols: { BrotliEncoderVersion: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 5,
+      "category": "Codecs & Compression",
+      "title": "Sandboxed wasm32-wasi Brotli for untrusted user payloads",
+      "pain_eliminated": "In-process C memory corruption risk when decompressing untrusted HTTP streams",
+      "cas_asset": "libbrotli-wasm32-wasi.wasm",
+      "one_liner": "const br = await ghostFFIByName('libbrotli-wasm32-wasi.wasm', { symbols: { BrotliDecoderDecompress: { args: ['i32','i32','i32','i32'], returns: 'i32' } } });"
+    },
+    {
+      "id": 6,
+      "category": "Codecs & Compression",
+      "title": "Shared Chromium-grade Brotli shard for Linux CI runners",
+      "pain_eliminated": "Recompiling Brotli from source inside every CMake/Ninja CI job",
+      "cas_asset": "brotli-shared-linux-x64.tar.gz",
+      "one_liner": "const br = await ghostFFIByName('brotli-shared-linux-x64.tar.gz', { symbols: { BrotliEncoderMaxCompressedSize: { args: ['usize'], returns: 'usize' } } });"
+    },
+    {
+      "id": 7,
+      "category": "Codecs & Compression",
+      "title": "Pinned Brotli C/C++ headers without git submodules",
+      "pain_eliminated": "Fragile git submodule update --init for brotli/encode.h headers",
+      "cas_asset": "brotli-include-fed075f.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('brotli-include-fed075f.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 8,
+      "category": "Codecs & Compression",
+      "title": "Zero-sharp WebP image transcoding on Windows x64",
+      "pain_eliminated": "120 MB sharp/libvips postinstall failures behind corporate proxies",
+      "cas_asset": "libwebp-win64.dll",
+      "one_liner": "const wp = await ghostFFIByName('libwebp-win64.dll', { symbols: { WebPEncodeRGBA: { args: ['ptr','i32','i32','i32','f32','ptr'], returns: 'usize' } } });"
+    },
+    {
+      "id": 9,
+      "category": "Codecs & Compression",
+      "title": "Serverless WebP thumbnailing on Linux x64",
+      "pain_eliminated": "600 MB Docker base images just to bundle libwebp + ImageMagick",
+      "cas_asset": "libwebp-linux-x64.so",
+      "one_liner": "const wp = await ghostFFIByName('libwebp-linux-x64.so', { symbols: { WebPDecodeRGBA: { args: ['ptr','usize','ptr','ptr'], returns: 'ptr' } } });"
+    },
+    {
+      "id": 10,
+      "category": "Codecs & Compression",
+      "title": "Edge ARM64 WebP image pipeline for Graviton Lambdas",
+      "pain_eliminated": "Broken x86_64-only npm image binaries on ARM64 cloud functions",
+      "cas_asset": "libwebp-linux-arm64.so",
+      "one_liner": "const wp = await ghostFFIByName('libwebp-linux-arm64.so', { symbols: { WebPGetDecoderVersion: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 11,
+      "category": "Codecs & Compression",
+      "title": "Native macOS arm64 WebP encoder for desktop asset pipelines",
+      "pain_eliminated": "Missing universal2 dylibs and DYLD_LIBRARY_PATH breakage on Apple Silicon",
+      "cas_asset": "libwebp-macos-arm64.dylib",
+      "one_liner": "const wp = await ghostFFIByName('libwebp-macos-arm64.dylib', { symbols: { WebPGetEncoderVersion: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 12,
+      "category": "Codecs & Compression",
+      "title": "Cross-OS wasm32-wasi WebP decoder for zero-trust image uploads",
+      "pain_eliminated": "CVE-2023-4863 style heap overflow blast radius in host image decoders",
+      "cas_asset": "libwebp-wasm32-wasi.wasm",
+      "one_liner": "const wp = await ghostFFIByName('libwebp-wasm32-wasi.wasm', { symbols: { WebPGetInfo: { args: ['i32','i32','i32','i32'], returns: 'i32' } } });"
+    },
+    {
+      "id": 13,
+      "category": "Codecs & Compression",
+      "title": "Prebuilt Chromium libwebp shared shard for Linux x64 builds",
+      "pain_eliminated": "20-minute C/C++ codec compilation in every PR check",
+      "cas_asset": "libwebp-shared-linux-x64.tar.gz",
+      "one_liner": "const wp = await ghostFFIByName('libwebp-shared-linux-x64.tar.gz', { symbols: { WebPFree: { args: ['ptr'], returns: 'void' } } });"
+    },
+    {
+      "id": 14,
+      "category": "Codecs & Compression",
+      "title": "Side-by-side pinned WebP C headers (rev f054d0c)",
+      "pain_eliminated": "System /usr/include/webp header mismatch between legacy and new builds",
+      "cas_asset": "libwebp-include-f054d0c.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('libwebp-include-f054d0c.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 15,
+      "category": "Codecs & Compression",
+      "title": "SIMD-accelerated libjpeg-turbo decoding without NASM/YASM",
+      "pain_eliminated": "Installing NASM/YASM + CMake + libjpeg-turbo-dev just to decode JPEGs fast",
+      "cas_asset": "libjpeg-turbo-shared-linux-x64.tar.gz",
+      "one_liner": "const jpg = await ghostFFIByName('libjpeg-turbo-shared-linux-x64.tar.gz', { symbols: { tjInitDecompress: { args: [], returns: 'ptr' } } });"
+    },
+    {
+      "id": 16,
+      "category": "Codecs & Compression",
+      "title": "Hermetic libjpeg-turbo header bundle for C/C++ & Zig FFI",
+      "pain_eliminated": "pkg-config libturbojpeg not found errors on minimal containers",
+      "cas_asset": "libjpeg-turbo-include-1631763.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('libjpeg-turbo-include-1631763.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 17,
+      "category": "Codecs & Compression",
+      "title": "Zero-config libpng native decoding on Linux x64",
+      "pain_eliminated": "libpng16.so.16 missing shared library errors in distroless containers",
+      "cas_asset": "libpng-shared-linux-x64.tar.gz",
+      "one_liner": "const png = await ghostFFIByName('libpng-shared-linux-x64.tar.gz', { symbols: { png_access_version_number: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 18,
+      "category": "Codecs & Compression",
+      "title": "Deterministic libpng headers pinned by content hash",
+      "pain_eliminated": "PNG_LIBPNG_VER_STRING header vs runtime ABI mismatch crashes",
+      "cas_asset": "libpng-include-73a6865.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('libpng-include-73a6865.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 19,
+      "category": "Codecs & Compression",
+      "title": "Chromium SIMD-optimized zlib shared library on Linux x64",
+      "pain_eliminated": "Slow stock OS zlib and inconsistent distro patch levels",
+      "cas_asset": "zlib-shared-linux-x64.tar.gz",
+      "one_liner": "const z = await ghostFFIByName('zlib-shared-linux-x64.tar.gz', { symbols: { zlibVersion: { args: [], returns: 'ptr' } } });"
+    },
+    {
+      "id": 20,
+      "category": "Codecs & Compression",
+      "title": "Side-by-side zlib header revisions (47b9b95 & bc98d84) with zero conflict",
+      "pain_eliminated": "Global /usr/include/zlib.h version collisions across monorepo packages",
+      "cas_asset": "zlib-include-47b9b95.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('zlib-include-47b9b95.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 21,
+      "category": "Databases & XML",
+      "title": "Zero-node-gyp SQLite3 on Windows x64 in 1 line",
+      "pain_eliminated": "better-sqlite3 node-gyp + Python + MSVC Build Tools 4 GB install",
+      "cas_asset": "libsqlite3-win64.dll",
+      "one_liner": "const db = await ghostFFIByName('libsqlite3-win64.dll', { symbols: { sqlite3_libversion_number: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 22,
+      "category": "Databases & XML",
+      "title": "Zero-compile SQLite3 on Linux x64 microservices",
+      "pain_eliminated": "sqlite3 C amalgamation build failures on Alpine/Debian slim containers",
+      "cas_asset": "libsqlite3-linux-x64.so",
+      "one_liner": "const db = await ghostFFIByName('libsqlite3-linux-x64.so', { symbols: { sqlite3_open_v2: { args: ['ptr','ptr','i32','ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 23,
+      "category": "Databases & XML",
+      "title": "Native ARM64 SQLite3 for edge gateways and Graviton",
+      "pain_eliminated": "Broken prebuilt sqlite3 addons on linux/arm64 nodes",
+      "cas_asset": "libsqlite3-linux-arm64.so",
+      "one_liner": "const db = await ghostFFIByName('libsqlite3-linux-arm64.so', { symbols: { sqlite3_exec: { args: ['ptr','ptr','ptr','ptr','ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 24,
+      "category": "Databases & XML",
+      "title": "Apple Silicon SQLite3 with identical FTS5/JSON1 ABI",
+      "pain_eliminated": "Outdated macOS system /usr/lib/libsqlite3.dylib missing modern extensions",
+      "cas_asset": "libsqlite3-macos-arm64.dylib",
+      "one_liner": "const db = await ghostFFIByName('libsqlite3-macos-arm64.dylib', { symbols: { sqlite3_close_v2: { args: ['ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 25,
+      "category": "Databases & XML",
+      "title": "5-OS portable wasm32-wasi SQLite3 for sandboxed multi-tenant queries",
+      "pain_eliminated": "Platform-specific native addon matrices and untrusted SQL isolation risk",
+      "cas_asset": "libsqlite3-wasm32-wasi.wasm",
+      "one_liner": "const db = await ghostFFIByName('libsqlite3-wasm32-wasi.wasm', { symbols: { sqlite3_libversion_number: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 26,
+      "category": "Databases & XML",
+      "title": "Chromium-hardened SQLite3 Linux x64 shard for CI & tests",
+      "pain_eliminated": "Spinning up heavyweight Postgres Docker containers for unit tests",
+      "cas_asset": "sqlite3-shared-linux-x64.tar.gz",
+      "one_liner": "const db = await ghostFFIByName('sqlite3-shared-linux-x64.tar.gz', { symbols: { sqlite3_threadsafe: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 27,
+      "category": "Databases & XML",
+      "title": "Pinned SQLite 3.49.1 C headers for native extensions",
+      "pain_eliminated": "apt-get install libsqlite3-dev version skew across dev laptops and CI",
+      "cas_asset": "sqlite3-include-3490100.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('sqlite3-include-3490100.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 28,
+      "category": "Databases & XML",
+      "title": "High-speed streaming XML parsing with Expat on Windows x64",
+      "pain_eliminated": "Slow JS DOM XML parsers OOMing on 500 MB enterprise XML/SAML feeds",
+      "cas_asset": "libexpat-win64.dll",
+      "one_liner": "const xml = await ghostFFIByName('libexpat-win64.dll', { symbols: { XML_ParserCreate: { args: ['ptr'], returns: 'ptr' } } });"
+    },
+    {
+      "id": 29,
+      "category": "Databases & XML",
+      "title": "Zero-dependency Expat SAX parser on Linux x64",
+      "pain_eliminated": "node-expat native compilation failures on Node 22+ V8 ABI upgrades",
+      "cas_asset": "libexpat-linux-x64.so",
+      "one_liner": "const xml = await ghostFFIByName('libexpat-linux-x64.so', { symbols: { XML_Parse: { args: ['ptr','ptr','i32','i32'], returns: 'i32' } } });"
+    },
+    {
+      "id": 30,
+      "category": "Databases & XML",
+      "title": "ARM64 streaming XML ingestion for cloud ETL workers",
+      "pain_eliminated": "Missing libexpat1-dev packages in minimal ARM64 Lambda/container layers",
+      "cas_asset": "libexpat-linux-arm64.so",
+      "one_liner": "const xml = await ghostFFIByName('libexpat-linux-arm64.so', { symbols: { XML_ExpatVersion: { args: [], returns: 'ptr' } } });"
+    },
+    {
+      "id": 31,
+      "category": "Databases & XML",
+      "title": "Apple Silicon native Expat parser for SVG/RSS/Maven tooling",
+      "pain_eliminated": "Homebrew path drift (/opt/homebrew vs /usr/local) for libexpat.dylib",
+      "cas_asset": "libexpat-macos-arm64.dylib",
+      "one_liner": "const xml = await ghostFFIByName('libexpat-macos-arm64.dylib', { symbols: { XML_ParserFree: { args: ['ptr'], returns: 'void' } } });"
+    },
+    {
+      "id": 32,
+      "category": "Databases & XML",
+      "title": "WASI-sandboxed Expat to neutralize XXE & Billion Laughs XML bombs",
+      "pain_eliminated": "Memory-unsafe C XML parsers exposed to hostile external XML documents",
+      "cas_asset": "libexpat-wasm32-wasi.wasm",
+      "one_liner": "const xml = await ghostFFIByName('libexpat-wasm32-wasi.wasm', { symbols: { XML_ParserCreate: { args: ['i32'], returns: 'i32' } } });"
+    },
+    {
+      "id": 33,
+      "category": "Databases & XML",
+      "title": "Prebuilt Expat shared shard for Linux x64 native linkers",
+      "pain_eliminated": "CMake FetchContent downloading and rebuilding Expat on every clean build",
+      "cas_asset": "expat-shared-linux-x64.tar.gz",
+      "one_liner": "const xml = await ghostFFIByName('expat-shared-linux-x64.tar.gz', { symbols: { XML_GetErrorCode: { args: ['ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 34,
+      "category": "Databases & XML",
+      "title": "Content-addressed Expat C headers for deterministic FFI bindings",
+      "pain_eliminated": "Missing expat.h / expat_external.h during cross-platform C/Zig builds",
+      "cas_asset": "expat-include-0d6dacc.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('expat-include-0d6dacc.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 35,
+      "category": "Typography & Pure-Art Display",
+      "title": "Headless FreeType glyph rasterization on Linux x64",
+      "pain_eliminated": "Installing 300 MB of Cairo/Pango/X11 packages just to render server-side fonts",
+      "cas_asset": "freetype-shared-linux-x64.tar.gz",
+      "one_liner": "const ft = await ghostFFIByName('freetype-shared-linux-x64.tar.gz', { symbols: { FT_Init_FreeType: { args: ['ptr'], returns: 'i32' } } });"
+    },
+    {
+      "id": 36,
+      "category": "Typography & Pure-Art Display",
+      "title": "Pinned FreeType headers for custom GPU SDF text renderers",
+      "pain_eliminated": "ft2build.h include path hell across Ubuntu, Fedora, and Windows",
+      "cas_asset": "freetype-include-504159f.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('freetype-include-504159f.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 37,
+      "category": "Typography & Pure-Art Display",
+      "title": "HarfBuzz complex-script shaping (Arabic, Indic, Emoji) on Linux x64",
+      "pain_eliminated": "Broken ligatures and missing libharfbuzz-dev in headless OG-image generators",
+      "cas_asset": "harfbuzz-shared-linux-x64.tar.gz",
+      "one_liner": "const hb = await ghostFFIByName('harfbuzz-shared-linux-x64.tar.gz', { symbols: { hb_buffer_create: { args: [], returns: 'ptr' } } });"
+    },
+    {
+      "id": 38,
+      "category": "Typography & Pure-Art Display",
+      "title": "Content-addressed HarfBuzz C headers for zero-drift text layout",
+      "pain_eliminated": "Meson/CMake failing to locate hb.h and hb-ft.h in cross-compile sysroots",
+      "cas_asset": "harfbuzz-include-ce0a123.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('harfbuzz-include-ce0a123.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 39,
+      "category": "Typography & Pure-Art Display",
+      "title": "176 KB pure-art Sectium Display engine on Windows x64",
+      "pain_eliminated": "180 MB Electron + Chromium + ANGLE bundle just to open a native canvas window",
+      "cas_asset": "libsectium_display.dll",
+      "one_liner": "const disp = await ghostFFIByName('libsectium_display.dll', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 40,
+      "category": "Typography & Pure-Art Display",
+      "title": "22 KB pure-art Sectium Display shared library on Linux x64",
+      "pain_eliminated": "GTK/Qt/WebKit2GTK dependency hell on Linux desktop apps",
+      "cas_asset": "libsectium_display-linux-x64.so",
+      "one_liner": "const disp = await ghostFFIByName('libsectium_display-linux-x64.so', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 41,
+      "category": "Typography & Pure-Art Display",
+      "title": "20 KB Sectium Display engine for Linux ARM64 kiosks & SBCs",
+      "pain_eliminated": "Chromium OOMing on 512 MB Raspberry Pi / embedded ARM64 displays",
+      "cas_asset": "libsectium_display-linux-arm64.so",
+      "one_liner": "const disp = await ghostFFIByName('libsectium_display-linux-arm64.so', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 42,
+      "category": "Typography & Pure-Art Display",
+      "title": "51 KB Sectium Display dylib for Apple Silicon macOS",
+      "pain_eliminated": "250 MB notarized Electron .app bundles for lightweight developer tools",
+      "cas_asset": "libsectium_display-macos-arm64.dylib",
+      "one_liner": "const disp = await ghostFFIByName('libsectium_display-macos-arm64.dylib', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 43,
+      "category": "Typography & Pure-Art Display",
+      "title": "16 KB WebAssembly Sectium Display for browser & WASI previewers",
+      "pain_eliminated": "Maintaining separate WebGL/Canvas2D and native desktop rendering stacks",
+      "cas_asset": "libsectium_display.wasm",
+      "one_liner": "const disp = await ghostFFIByName('libsectium_display.wasm', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 44,
+      "category": "Typography & Pure-Art Display",
+      "title": "On-demand Windows PDB debug symbols hydrated only when debugging",
+      "pain_eliminated": "Bloating production installers with megabytes of .pdb symbol files",
+      "cas_asset": "libsectium_display.pdb",
+      "one_liner": "const pdb = await ghostFFIByName('libsectium_display.pdb', { symbols: {} });"
+    },
+    {
+      "id": 45,
+      "category": "Typography & Pure-Art Display",
+      "title": "24 KB Ghost Display micro-shim for zero-copy Win64 surfaces",
+      "pain_eliminated": "Static-linking heavy GUI SDKs into every tiny utility binary",
+      "cas_asset": "ghost_sectium_display.dll",
+      "one_liner": "const gd = await ghostFFIByName('ghost_sectium_display.dll', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 46,
+      "category": "Typography & Pure-Art Display",
+      "title": "10 KB Ghost Display micro-shim for Linux x64 framebuffers",
+      "pain_eliminated": "Shipping duplicate display drivers across multi-process Linux apps",
+      "cas_asset": "ghost_sectium_display-linux-x64.so",
+      "one_liner": "const gd = await ghostFFIByName('ghost_sectium_display-linux-x64.so', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 47,
+      "category": "Typography & Pure-Art Display",
+      "title": "10 KB Ghost Display micro-shim for Linux ARM64 panels",
+      "pain_eliminated": "Cross-compiling Wayland/X11 glue code for every ARM64 target",
+      "cas_asset": "ghost_sectium_display-linux-arm64.so",
+      "one_liner": "const gd = await ghostFFIByName('ghost_sectium_display-linux-arm64.so', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 48,
+      "category": "Typography & Pure-Art Display",
+      "title": "53 KB Ghost Display dylib for Apple Silicon floating surfaces",
+      "pain_eliminated": "Writing Objective-C/Cocoa boilerplate just to present a pixel buffer",
+      "cas_asset": "ghost_sectium_display-macos-arm64.dylib",
+      "one_liner": "const gd = await ghostFFIByName('ghost_sectium_display-macos-arm64.dylib', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 49,
+      "category": "Typography & Pure-Art Display",
+      "title": "Content-addressed Lumi White Dragon multi-res brand pack",
+      "pain_eliminated": "Duplicating megabytes of PNG/SVG icons across dozens of git repositories",
+      "cas_asset": "lumi-white-dragon-brand-pack.tar.gz",
+      "one_liner": "const brand = await ghostFFIByName('lumi-white-dragon-brand-pack.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 50,
+      "category": "Typography & Pure-Art Display",
+      "title": "Verified multi-resolution Windows .ico hydrated from CAS",
+      "pain_eliminated": "Committing binary .ico blobs into Git history and breaking HiDPI taskbar icons",
+      "cas_asset": "lumi-white-dragon.ico",
+      "one_liner": "const ico = await ghostFFIByName('lumi-white-dragon.ico', { symbols: {} });"
+    },
+    {
+      "id": 51,
+      "category": "Typography & Pure-Art Display",
+      "title": "Declarative Chromium brand overlay without forking Chromium source",
+      "pain_eliminated": "Maintaining fragile multi-thousand-line git rebase patches on Chromium branding",
+      "cas_asset": "chromium-brand-overlay.json",
+      "one_liner": "const overlay = await ghostFFIByName('chromium-brand-overlay.json', { symbols: {} });"
+    },
+    {
+      "id": 52,
+      "category": "Typography & Pure-Art Display",
+      "title": "Single-pack Sectium Win64 display appliance (.b8p CAS pack)",
+      "pain_eliminated": "NSIS/MSI installer wizards, registry pollution, and admin UAC prompts",
+      "cas_asset": "sectium-shell-win64.b8p",
+      "one_liner": "const pack = await ghostFFIByName('sectium-shell-win64.b8p', { symbols: {} });"
+    },
+    {
+      "id": 53,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "FIPS-grade BoringSSL crypto on Linux x64 without OpenSSL 1.1 vs 3.x hell",
+      "pain_eliminated": "libssl.so.1.1 vs libssl.so.3 ABI breakage across Ubuntu 20/22/24",
+      "cas_asset": "boringssl-shared-linux-x64.tar.gz",
+      "one_liner": "const ssl = await ghostFFIByName('boringssl-shared-linux-x64.tar.gz', { symbols: { OPENSSL_version_num: { args: [], returns: 'u64' } } });"
+    },
+    {
+      "id": 54,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Pinned BoringSSL headers (rev 289645a) for TLS 1.3 & QUIC builds",
+      "pain_eliminated": "System OpenSSL headers clashing with BoringSSL QUIC/HPKE symbols",
+      "cas_asset": "boringssl-include-289645a.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('boringssl-include-289645a.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 55,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Zero-trust SHA-256 verification of every native FFI library before load",
+      "pain_eliminated": "Supply-chain tampering via mutable npm postinstall download URLs",
+      "cas_asset": "ghost-5os-manifest.json",
+      "one_liner": "const m = await ghostFFIByName('ghost-5os-manifest.json', { symbols: {} });"
+    },
+    {
+      "id": 56,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "4-OS baseline integrity manifest for air-gapped enterprise mirrors",
+      "pain_eliminated": "Manual checksum spreadsheets and unaudited binary vendoring in dark sites",
+      "cas_asset": "ghost-4os-manifest.json",
+      "one_liner": "const m = await ghostFFIByName('ghost-4os-manifest.json', { symbols: {} });"
+    },
+    {
+      "id": 57,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Cryptographic SBOM shard manifest for Chromium C/C++ dependencies",
+      "pain_eliminated": "Opaque third_party/ tarballs with unverified provenance in compliance audits",
+      "cas_asset": "ghost-shards-manifest.json",
+      "one_liner": "const m = await ghostFFIByName('ghost-shards-manifest.json', { symbols: {} });"
+    },
+    {
+      "id": 58,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Signed-hash compiler toolchain lockfile across Windows, Linux & macOS",
+      "pain_eliminated": "Silent compiler drift causing non-reproducible release binaries",
+      "cas_asset": "ghost-toolchains-manifest.json",
+      "one_liner": "const m = await ghostFFIByName('ghost-toolchains-manifest.json', { symbols: {} });"
+    },
+    {
+      "id": 59,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "13 KB zero-dependency Ghost CAS SDK for custom registries",
+      "pain_eliminated": "Pulling 400 transitive npm packages just to implement CAS download & verification",
+      "cas_asset": "b8g-ghost-sdk.tar.gz",
+      "one_liner": "const sdk = await ghostFFIByName('b8g-ghost-sdk.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 60,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Side-by-side multi-version native libraries with zero DLL Hell",
+      "pain_eliminated": "Single global version lock in /usr/lib or System32 breaking older plugins",
+      "cas_asset": "libwebp-include-fdee9a8.tar.gz",
+      "one_liner": "const v2 = await ghostFFIByName('libwebp-include-fdee9a8.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 61,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Content-addressed zlib rev bc98d84 coexisting with rev 47b9b95",
+      "pain_eliminated": "Diamond dependency conflicts when two modules require different C ABI versions",
+      "cas_asset": "zlib-include-bc98d84.tar.gz",
+      "one_liner": "const v2 = await ghostFFIByName('zlib-include-bc98d84.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 62,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Tamper-evident warm CAS cache hits with zero network latency",
+      "pain_eliminated": "Repeatedly re-downloading binaries in CI or trusting unverified local caches",
+      "cas_asset": "libbrotli-linux-x64.so",
+      "one_liner": "const br = await ghostFFIByName('libbrotli', { symbols: { BrotliDecoderVersion: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 63,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Memory-isolated WASI crypto/SQLite execution for untrusted plugins",
+      "pain_eliminated": "Native addon plugins reading host process secrets via raw pointer access",
+      "cas_asset": "libsqlite3-wasm32-wasi.wasm",
+      "one_liner": "const iso = await ghostFFIByName('libsqlite3-wasm32-wasi.wasm', { symbols: { sqlite3_libversion_number: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 64,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Zero-trust WASI XML sanitization before host ingestion",
+      "pain_eliminated": "Exposing host libc heap to hostile XML entity expansion attacks",
+      "cas_asset": "libexpat-wasm32-wasi.wasm",
+      "one_liner": "const iso = await ghostFFIByName('libexpat-wasm32-wasi.wasm', { symbols: { XML_ExpatVersion: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 65,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Zero-trust WASI WebP inspection before image pipeline ingestion",
+      "pain_eliminated": "Running native image parsers directly on untrusted user uploads",
+      "cas_asset": "libwebp-wasm32-wasi.wasm",
+      "one_liner": "const iso = await ghostFFIByName('libwebp-wasm32-wasi.wasm', { symbols: { WebPGetDecoderVersion: { args: [], returns: 'i32' } } });"
+    },
+    {
+      "id": 66,
+      "category": "Cryptography & Zero-Trust CAS",
+      "title": "Zero-trust WASI Brotli decompression with bounded linear memory",
+      "pain_eliminated": "Zip/Brotli bomb DoS exhausting host process memory",
+      "cas_asset": "libbrotli-wasm32-wasi.wasm",
+      "one_liner": "const iso = await ghostFFIByName('libbrotli-wasm32-wasi.wasm', { symbols: { BrotliDecoderVersion: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 67,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Hermetic LLVM 23.1.6 full toolchain on Linux x64 via O(1) CAS",
+      "pain_eliminated": "apt-get clang version lag and 4-hour LLVM source builds on Linux CI",
+      "cas_asset": "ghost-llvm-23.1.6-full-linux-x64.tar.zst",
+      "one_liner": "const llvm = await ghostFFIByName('ghost-llvm-23.1.6-full-linux-x64.tar.zst', { symbols: {} });"
+    },
+    {
+      "id": 68,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Hermetic LLVM 23.1.6 full toolchain on Windows x64",
+      "pain_eliminated": "Manual LLVM installer clicks and broken PATH ordering on Windows dev boxes",
+      "cas_asset": "ghost-llvm-23.1.6-full-win64.tar.zst",
+      "one_liner": "const llvm = await ghostFFIByName('ghost-llvm-23.1.6-full-win64.tar.zst', { symbols: {} });"
+    },
+    {
+      "id": 69,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Zig 0.14.0 cross-compiler for Linux x64 (C/C++/WASI from one binary)",
+      "pain_eliminated": "Installing 5 separate gcc/musl/mingw cross-compiler toolchains in Docker",
+      "cas_asset": "ghost-zig-0.14.0-linux-x64.tar.xz",
+      "one_liner": "const zig = await ghostFFIByName('ghost-zig-0.14.0-linux-x64.tar.xz', { symbols: {} });"
+    },
+    {
+      "id": 70,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Zig 0.14.0 cross-compiler on Apple Silicon macOS arm64",
+      "pain_eliminated": "Bootstrapping Linux/Windows C/C++ cross-builds from MacBooks via slow VMs",
+      "cas_asset": "ghost-zig-0.14.0-macos-arm64.tar.xz",
+      "one_liner": "const zig = await ghostFFIByName('ghost-zig-0.14.0-macos-arm64.tar.xz', { symbols: {} });"
+    },
+    {
+      "id": 71,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Zig 0.14.0 native Windows x64 cross-compiler (zero WSL required)",
+      "pain_eliminated": "Spinning up WSL2 just to cross-compile Linux ELF64 or wasm32-wasi binaries",
+      "cas_asset": "ghost-zig-0.14.0-win64.zip",
+      "one_liner": "const zig = await ghostFFIByName('ghost-zig-0.14.0-win64.zip', { symbols: {} });"
+    },
+    {
+      "id": 72,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "123 KB Ninja 1.12.1 build synthesizer on Linux x64",
+      "pain_eliminated": "Missing ninja-build package or ancient distro Ninja versions in CI",
+      "cas_asset": "ghost-ninja-1.12.1-linux-x64.zip",
+      "one_liner": "const ninja = await ghostFFIByName('ghost-ninja-1.12.1-linux-x64.zip', { symbols: {} });"
+    },
+    {
+      "id": 73,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "281 KB Ninja 1.12.1 build synthesizer on macOS",
+      "pain_eliminated": "brew install ninja overhead on ephemeral GitHub Actions macOS runners",
+      "cas_asset": "ghost-ninja-1.12.1-macos.zip",
+      "one_liner": "const ninja = await ghostFFIByName('ghost-ninja-1.12.1-macos.zip', { symbols: {} });"
+    },
+    {
+      "id": 74,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "275 KB Ninja 1.12.1 build synthesizer on Windows x64",
+      "pain_eliminated": "choco/winget rate limits and admin elevation just to get ninja.exe",
+      "cas_asset": "ghost-ninja-1.12.1-win64.zip",
+      "one_liner": "const ninja = await ghostFFIByName('ghost-ninja-1.12.1-win64.zip', { symbols: {} });"
+    },
+    {
+      "id": 75,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "57 MB hermetic WinSDK + MSVC x64 sysroot (no 12 GB Visual Studio)",
+      "pain_eliminated": "GitHub runner Windows SDK lag and 12 GB Visual Studio Build Tools installs",
+      "cas_asset": "ghost-winsdk-msvc-x64.tar.zst",
+      "one_liner": "const sdk = await ghostFFIByName('ghost-winsdk-msvc-x64.tar.zst', { symbols: {} });"
+    },
+    {
+      "id": 76,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Reproducible GN build flags for Linux x64 V8/Chromium builds",
+      "pain_eliminated": "Hand-tweaking 40 undocumented args.gn flags that break on every V8 roll",
+      "cas_asset": "args-linux-x64.gn",
+      "one_liner": "const gn = await ghostFFIByName('args-linux-x64.gn', { symbols: {} });"
+    },
+    {
+      "id": 77,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Reproducible GN build flags for Windows x64 V8/Chromium builds",
+      "pain_eliminated": "Mismatched CRT (/MT vs /MD) and is_component_build errors on Windows",
+      "cas_asset": "args-win64.gn",
+      "one_liner": "const gn = await ghostFFIByName('args-win64.gn', { symbols: {} });"
+    },
+    {
+      "id": 78,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Prebuilt shared V8 Win64 .b8p pack (0-byte duplicate V8 linking)",
+      "pain_eliminated": "3-hour V8 C++ compilation and 80 MB duplicate V8 binaries per tool",
+      "cas_asset": "v8-shared-win64.b8p",
+      "one_liner": "const v8 = await ghostFFIByName('v8-shared-win64.b8p', { symbols: {} });"
+    },
+    {
+      "id": 79,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Prebuilt shared V8 Win64 zip for instant native JS engine embedding",
+      "pain_eliminated": "depot_tools + gclient sync downloading 15 GB just to embed V8 on Windows",
+      "cas_asset": "v8-shared-win64.zip",
+      "one_liner": "const v8 = await ghostFFIByName('v8-shared-win64.zip', { symbols: {} });"
+    },
+    {
+      "id": 80,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "19 MB prebuilt shared V8 Linux x64 shard for polyglot runtimes",
+      "pain_eliminated": "Compiling V8 from scratch in Linux CI to test custom V8 embedders",
+      "cas_asset": "v8-shared-linux-x64.tar.gz",
+      "one_liner": "const v8 = await ghostFFIByName('v8-shared-linux-x64.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 81,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Pinned V8 C++ public headers (rev eaf3708a) without depot_tools",
+      "pain_eliminated": "Cloning gigabytes of v8.git just to #include <v8.h> in C++20/Zig",
+      "cas_asset": "v8-include-eaf3708a.tar.gz",
+      "one_liner": "const hdr = await ghostFFIByName('v8-include-eaf3708a.tar.gz', { symbols: {} });"
+    },
+    {
+      "id": 82,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "71 KB Bun-Neon-V8 bridge executable for zero-bloat V8 experiments",
+      "pain_eliminated": "Bundling a full 100 MB JS runtime just to host an embedded V8 isolate",
+      "cas_asset": "bun-neon-v8.exe",
+      "one_liner": "const v8bin = await ghostFFIByName('bun-neon-v8.exe', { symbols: {} });"
+    },
+    {
+      "id": 83,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Instant WASI-native AOT fallback when host OS lacks a prebuilt .so/.dll",
+      "pain_eliminated": "Unsupported platform / musl / BSD crashes in native npm packages",
+      "cas_asset": "libsectium_display.wasm",
+      "one_liner": "const disp = await ghostFFIByName('libsectium_display', { symbols: { sectium_display_version: { args: [], returns: 'u32' } } });"
+    },
+    {
+      "id": 84,
+      "category": "Compilers & Polyglot Wasm/AOT-JIT",
+      "title": "Zero-header C-ABI compilation with Zig 0.14 + BoringSSL headers",
+      "pain_eliminated": "Autoconf/CMake configure scripts taking longer than the actual C compile",
+      "cas_asset": "ghost-zig-0.14.0-linux-x64.tar.xz",
+      "one_liner": "const zig = await ghostFFIByName('ghost-zig-0.14.0-linux-x64.tar.xz', { symbols: {} });"
+    },
+    {
+      "id": 85,
+      "category": "Microkernel & Cloud CI",
+      "title": "205 KB native split-pane browser shell appliance (zero Electron)",
+      "pain_eliminated": "300 MB Electron wrappers eating 1.2 GB RAM for a simple split-view app",
+      "cas_asset": "01-browser-split-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('01-browser-split-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 86,
+      "category": "Microkernel & Cloud CI",
+      "title": "206 KB native IDE workbench shell hydrated on demand",
+      "pain_eliminated": "Multi-gigabyte IDE installers and slow cold-start plugin hosts",
+      "cas_asset": "02-ide-workbench-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('02-ide-workbench-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 87,
+      "category": "Microkernel & Cloud CI",
+      "title": "197 KB native tiling window-manager shell",
+      "pain_eliminated": "Heavyweight desktop compositor forks and fragile config daemons",
+      "cas_asset": "03-tiling-wm-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('03-tiling-wm-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 88,
+      "category": "Microkernel & Cloud CI",
+      "title": "203 KB instant command-palette launcher shell",
+      "pain_eliminated": "Background Chromium/Electron tray launchers idling at 400 MB RAM",
+      "cas_asset": "04-command-palette-launcher.exe",
+      "one_liner": "const app = await ghostFFIByName('04-command-palette-launcher.exe', { symbols: {} });"
+    },
+    {
+      "id": 89,
+      "category": "Microkernel & Cloud CI",
+      "title": "204 KB multi-agent world orchestration shell",
+      "pain_eliminated": "Heavy browser-tab sprawl when visualizing parallel autonomous agents",
+      "cas_asset": "05-multi-agent-world-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('05-multi-agent-world-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 90,
+      "category": "Microkernel & Cloud CI",
+      "title": "201 KB native node-graph studio shell",
+      "pain_eliminated": "Laggy DOM/SVG canvas frameworks choking on 10k-node visual graphs",
+      "cas_asset": "06-node-graph-studio-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('06-node-graph-studio-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 91,
+      "category": "Microkernel & Cloud CI",
+      "title": "204 KB docking telemetry dashboard shell",
+      "pain_eliminated": "Spinning up local Grafana + Docker stacks for live developer telemetry",
+      "cas_asset": "07-docking-dashboard-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('07-docking-dashboard-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 92,
+      "category": "Microkernel & Cloud CI",
+      "title": "193 KB system-tray popover widget shell",
+      "pain_eliminated": "150 MB Electron menubar apps just to display a tiny status popover",
+      "cas_asset": "08-tray-popover-widget-shell.exe",
+      "one_liner": "const app = await ghostFFIByName('08-tray-popover-widget-shell.exe', { symbols: {} });"
+    },
+    {
+      "id": 93,
+      "category": "Microkernel & Cloud CI",
+      "title": "29 KB universal binary shim dispatcher for Windows x64",
+      "pain_eliminated": "Inconsistent host PATH tools and broken .bat/.ps1 wrapper drift",
+      "cas_asset": "b8g-shim.exe",
+      "one_liner": "const shim = await ghostFFIByName('b8g-shim.exe', { symbols: {} });"
+    },
+    {
+      "id": 94,
+      "category": "Microkernel & Cloud CI",
+      "title": "38 KB universal binary shim dispatcher for Linux x64 CI",
+      "pain_eliminated": "Dockerfiles bloated with shell wrapper hacks and global /usr/local/bin mutations",
+      "cas_asset": "b8g-shim-linux-x64",
+      "one_liner": "const shim = await ghostFFIByName('b8g-shim-linux-x64', { symbols: {} });"
+    },
+    {
+      "id": 95,
+      "category": "Microkernel & Cloud CI",
+      "title": "44 KB universal binary shim dispatcher for Linux ARM64",
+      "pain_eliminated": "Missing static ARM64 CLI dispatchers on Graviton and edge nodes",
+      "cas_asset": "b8g-shim-linux-arm64",
+      "one_liner": "const shim = await ghostFFIByName('b8g-shim-linux-arm64', { symbols: {} });"
+    },
+    {
+      "id": 96,
+      "category": "Microkernel & Cloud CI",
+      "title": "52 KB universal binary shim dispatcher for macOS Apple Silicon",
+      "pain_eliminated": "Rosetta 2 translation overhead and Homebrew symlink conflicts on macOS",
+      "cas_asset": "b8g-shim-macos-arm64",
+      "one_liner": "const shim = await ghostFFIByName('b8g-shim-macos-arm64', { symbols: {} });"
+    },
+    {
+      "id": 97,
+      "category": "Microkernel & Cloud CI",
+      "title": "55 KB algebra-router .b8p microkernel routing pack",
+      "pain_eliminated": "Heavy API gateway containers (Envoy/NGINX) for local service routing",
+      "cas_asset": "algebra-router.b8p",
+      "one_liner": "const router = await ghostFFIByName('algebra-router.b8p', { symbols: {} });"
+    },
+    {
+      "id": 98,
+      "category": "Microkernel & Cloud CI",
+      "title": "42 KB app-paths .b8p canonical workspace path resolver",
+      "pain_eliminated": "OS-specific XDG / AppData / Library path bugs across cross-platform CLIs",
+      "cas_asset": "app-paths.b8p",
+      "one_liner": "const paths = await ghostFFIByName('app-paths.b8p', { symbols: {} });"
+    },
+    {
+      "id": 99,
+      "category": "Microkernel & Cloud CI",
+      "title": "50 KB production-rack Win64 microkernel deployment bundle",
+      "pain_eliminated": "Multi-gigabyte VM images and manual Windows Service provisioning scripts",
+      "cas_asset": "b8g-production-rack-win64.zip",
+      "one_liner": "const rack = await ghostFFIByName('b8g-production-rack-win64.zip', { symbols: {} });"
+    },
+    {
+      "id": 100,
+      "category": "Microkernel & Cloud CI",
+      "title": "Sub-second GitHub Actions native dependency hydration with 0 apt/brew",
+      "pain_eliminated": "5-minute apt-get / brew / choco setup steps burning CI minutes on every push",
+      "cas_asset": "libsqlite3-linux-x64.so",
+      "one_liner": "const ciLib = await ghostFFIByName('libsqlite3', { symbols: { sqlite3_libversion_number: { args: [], returns: 'i32' } } });"
+    }
+  ]
+}
