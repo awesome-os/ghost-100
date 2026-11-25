@@ -1,0 +1,52 @@
+{
+  "schema": "holo-compiler-lockfile-v1",
+  "abiMagic": "0x33564742",
+  "casLayout": "v11",
+  "repo": "awesome-os/ghost-100",
+  "targets": [
+    "win64",
+    "linux-x64",
+    "linux-arm64",
+    "macos-arm64",
+    "wasm32-wasi"
+  ],
+  "generatedAt": "2026-11-24T23:53:02.473Z",
+  "dependencies": [
+    {
+      "id": "awesome-os/ghost-100/ghost-100-v0.2.0.tar.zst",
+      "kind": "object",
+      "version": "v0.2.0",
+      "target": "any",
+      "sha512": "88d763e8e1467ccbcbc4751a74ca32b7cc3ca0954e1829a857ec881f0c7076b8648b3ecf54bb25006a80177af24b1ab7536a7ba2d874cc9d8bf312cf51f07af5",
+      "size": 23996,
+      "executable": false,
+      "blob": "v11/files/88/88d763e8e1467ccbcbc4751a74ca32b7cc3ca0954e1829a857ec881f0c7076b8648b3ecf54bb25006a80177af24b1ab7536a7ba2d874cc9d8bf312cf51f07af5",
+      "url": "https://github.com/awesome-os/ghost-100/releases/download/v0.2.0/ghost-100-v0.2.0.tar.zst",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/ghost-100/SHA256SUMS.txt",
+      "kind": "object",
+      "version": "v0.2.0",
+      "target": "any",
+      "sha512": "87dcacdcfd2c527ced5653289daadf3ddfc8a42d1656cee593b726055e74d0e9cf2c87368eacafb6ef466d82e74568b94c7abfff82d82b7f48b9a44baa2f0d6f",
+      "size": 91,
+      "executable": false,
+      "blob": "v11/files/87/87dcacdcfd2c527ced5653289daadf3ddfc8a42d1656cee593b726055e74d0e9cf2c87368eacafb6ef466d82e74568b94c7abfff82d82b7f48b9a44baa2f0d6f",
+      "url": "https://github.com/awesome-os/ghost-100/releases/download/v0.2.0/SHA256SUMS.txt",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/ghost-100/SHA512SUMS.txt",
+      "kind": "object",
+      "version": "v0.2.0",
+      "target": "any",
+      "sha512": "fb356cd9772906d124931c6a1eb94ae7f4201f2aa39230cf6994296ea7424918a0c3606a0b111027c9a3774c80f2f7ca2de639b06705feba4644259337b1d8b7",
+      "size": 155,
+      "executable": false,
+      "blob": "v11/files/fb/fb356cd9772906d124931c6a1eb94ae7f4201f2aa39230cf6994296ea7424918a0c3606a0b111027c9a3774c80f2f7ca2de639b06705feba4644259337b1d8b7",
+      "url": "https://github.com/awesome-os/ghost-100/releases/download/v0.2.0/SHA512SUMS.txt",
+      "dependencies": []
+    }
+  ]
+}
