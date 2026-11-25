@@ -210,3 +210,13 @@ Hermetic LLVM 23.1.6, Zig 0.14.0 cross-compilers, Ninja 1.12.1, 57 MB WinSDK/MSV
 - **Live Index Manifest:** [`manifests/index.json`](https://raw.githubusercontent.com/awesome-os/b8g-ghost/main/manifests/index.json)
 - **Machine-Readable Catalog:** [`catalog/top-100.json`](./catalog/top-100.json) (`schema: "ghost-100-catalog-v1"`)
 - **Live Verification Suite:** [`run-demos.mts`](./run-demos.mts) & [`lib/ghost-ffi.mts`](./lib/ghost-ffi.mts)
+
+## Quick Install & Run (Windows / Linux / macOS)
+
+```sh
+# Install / hydrate from v11 CAS via holo-pm
+holo-pm install repository://github.com/awesome-os/ghost-100@main
+
+# Or project & run directly via holo-project (0-byte hardlink)
+holo-project "project://cpp/ghost-100?from=repository://github.com/awesome-os/ghost-100@main"
+```
